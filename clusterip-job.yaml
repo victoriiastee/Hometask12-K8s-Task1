@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cluster-ip
+spec:
+  template:
+    spec:
+      containers:
+      - name: internal-port
+        image: curlimages/curl:latest
+        command: ['curl', '10.96.1.10']
+      restartPolicy: OnFailure
